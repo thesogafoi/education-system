@@ -14,6 +14,7 @@ class TeacherTest extends TestCase
     /** @test */
     public function a_teacher_can_created_in_factory()
     {
+        // this is a comment
         $teacher = create(Teacher::class, 1)->first();
         $this->assertDatabaseHas('teachers', [
             'username' => $teacher->username,
