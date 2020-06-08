@@ -20,7 +20,6 @@ class StudentLoginTest extends TestCase
     /** @test */
     public function a_student_can_sign_in_with_username_and_password()
     {
-        // this line created by the soga
         // create Student with specific data
         $student = $this->createStudentManually();
         // save needed data
