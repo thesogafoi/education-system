@@ -22,7 +22,7 @@ class TeacherLoginTest extends TestCase
             'password' => '021051'
         ];
         // send it to login page as post request for attempt t login
-        $response = $this->post('/login', $teacherDataForLogin);
+        $response = $this->post('/login/teacher', $teacherDataForLogin);
         // assert we have not error on there
         $response->assertStatus(200);
         // we should get true in login

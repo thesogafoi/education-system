@@ -14,10 +14,10 @@ class LoginController extends Controller
         // $this->middleware('guest:teacher')->except('logout');
     }
 
-    public function login(Request $request)
+    public function login(Request $request, $loginGuard)
     {
         $credentials = $request->only('username', 'password');
-        if (Auth::guard('teacher')->attempt($credentials)) {
+        if (Auth::guard("{$loginGuard}")->attempt($credentials)) {
             return true;
         }
 

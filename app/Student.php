@@ -3,13 +3,10 @@
 namespace App;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
 
-class Teacher extends Authenticatable
+class Student extends Authenticatable
 {
-    use Notifiable;
-    protected $table = 'teachers';
-
+    protected $table = 'students';
     protected $fillable = [
         'firstname', 'username', 'lastname', 'email'
     ];
