@@ -12,11 +12,18 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+// HomeController Routes
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('home');
 
-Route::get('/login', 'Auth\LoginController@showLoginForm');
-Route::post('/login/{loginGuard}', 'Auth\LoginController@login');
-Route::post('/logout', 'Auth\LoginController@logout');
+// login page Routes
+Route::get('/login', 'Auth\LoginController@showLoginForm')->name('login')->middleware('logout');
+Route::post('/login/{loginGuard}', 'Auth\LoginController@login')->middleware('logout');
+Route::post('/logout/{loginGuard}', 'Auth\LoginController@logout')->middleware('login');
+
+// Student Dashboard Routes
+Route::get('/dashboard', 'StudentDashboardController@index')->name('student.dashboard');
+
+// Teacher Dashboard Routes
+Route::get('/admin/dashboard', 'TeacherDashboardController@index')->name('teacher.dashboard');

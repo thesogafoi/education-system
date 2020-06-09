@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use App\Teacher;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -11,14 +10,17 @@ class LoginController extends Controller
 {
     public function __construct()
     {
-        // $this->middleware('guest:teacher')->except('logout');
     }
 
     public function login(Request $request, $loginGuard)
     {
         $credentials = $request->only('username', 'password');
         if (Auth::guard("{$loginGuard}")->attempt($credentials)) {
-            return true;
+            if ($loginGuard == 'teacher') {
+                return redirect(route('teacher.dashboard'));
+            } elseif ($loginGuard == 'student') {
+                return redirect(route('student.dashboard'));
+            }
         }
 
         return false;
@@ -29,7 +31,10 @@ class LoginController extends Controller
         return view('front.login');
     }
 
-    public function logout()
+    public function logout($loginGuard)
     {
+        Auth::guard("{$loginGuard}")->logout();
+
+        return redirect(route('home'));
     }
 }
