@@ -35,6 +35,17 @@ class StudentLoginTest extends TestCase
         $this->assertTrue((bool) $response->getContent());
     }
 
+    /** @test */
+    public function a_student_can_log_out_of_his_or_her_account()
+    {
+    }
+
+    /** @test */
+    public function a_sudent_can_be_created_by_guest()
+    {
+    }
+
+    // Additional functions
     public function createStudentManually()
     {
         $student = new Student();
