@@ -46,6 +46,7 @@ Login
     <main  class="es-main">
 
 
+    <login inline-template>
         <div class="uk-grid-match uk-grid-collapse uk-child-width-expands@s uk-text-center" uk-grid>
             <div class="uk-width-1-2@s">
                 <div class="uk-padding-large">
@@ -65,15 +66,15 @@ Login
                             <div class="uk-card-body">
                                 <h3 class="uk-card-title"> خوش آمدید </h3>
                                 <ul class="uk-child-width-expand" uk-tab>
-                                    <li class="uk-active"><a href=""> دانش آموزان </a></li>
-                                    <li><a href=""> اعضا </a></li>
+                                    <li class="uk-active"><a href="" @click="toggleUserType()"> دانش آموزان </a></li>
+                                    <li><a href="" @click="toggleUserType()"> اعضا </a></li>
                                 </ul>
-                                <ul class="uk-child-width-expand" uk-tab>
-                                    <li><a href=""> ورود </a></li>
-                                    <li class="uk-active"><a href=""> ثبت نام </a></li>
+                                <ul v-if=" userType != 'teacher'" class="uk-child-width-expand" uk-tab>
+                                    <li><a href="" @click="toggleFormType()"> ورود </a></li>
+                                    <li class="uk-active"><a href="" @click="toggleFormType()"> ثبت نام </a></li>
                                 </ul>
                             </div> <!-- form tabs -->
-                            <div class="uk-card-body uk-text-right">
+                            <div v-if=" userType == 'student' && formType == 'register' " class="uk-card-body uk-text-right">
                                 <form class="uk-form-stacked" action="">
                                     <div class="uk-margin">
                                         <label class="uk-form-label" for="student-username"> نام کاربری </label>
@@ -101,9 +102,6 @@ Login
                                     </div> <!-- field3 -->
                                     <div uk-grid>
                                         <div class="uk-width-1-2">
-                                            <a href=""> فراموش؟ </a>
-                                        </div>
-                                        <div class="uk-width-1-2">
                                             <label><input class="uk-checkbox" type="checkbox"> دائم </label>
                                         </div>
                                         <div class="uk-width-expand">
@@ -112,14 +110,81 @@ Login
                                         </div>
                                     </div> <!-- form options -->
                                 </form>
-                            </div> <!-- card body and form content -->
+                            </div> <!-- card body and register form content student -->
+                            <div v-if=" userType == 'student' && formType == 'login' " class="uk-card-body uk-text-right">
+                                <form class="uk-form-stacked" action="">
+                                    <div class="uk-margin">
+                                        <label class="uk-form-label" for="student-username"> نام کاربری </label>
+                                        <div class="uk-form-controls uk-inline">
+                                            <span class="uk-form-icon" uk-icon="icon: user"></span>
+                                            <input class="uk-input uk-form-width-large" id="student-username"
+                                                type="text">
+                                        </div>
+                                    </div> <!-- field1 -->
+                                    <div class="uk-margin">
+                                        <label class="uk-form-label" for="student-username"> رمز عبور </label>
+                                        <div class="uk-form-controls uk-inline">
+                                            <span class="uk-form-icon" uk-icon="icon: lock"></span>
+                                            <input class="uk-input uk-form-width-large" id="student-username"
+                                                type="text">
+                                        </div>
+                                    </div> <!-- field2 -->
+                                    <div uk-grid>
+                                        <div class="uk-width-1-2">
+                                            <a href=""> فراموش؟ </a>
+                                        </div>
+                                        <div class="uk-width-1-2">
+                                            <label><input class="uk-checkbox" type="checkbox"> دائم </label>
+                                        </div>
+                                        <div class="uk-width-expand">
+                                            <button class="uk-button uk-button-primary uk-width-1-1"> 
+                                                ورود
+                                            </button>
+                                        </div>
+                                    </div> <!-- form options -->
+                                </form>
+                            </div> <!-- card body and login form content student -->
+
+                            <div v-if=" userType == 'teacher'" class="uk-card-body uk-text-right t">
+                                <form class="uk-form-stacked" action="">
+                                    <div class="uk-margin">
+                                        <label class="uk-form-label" for="student-username"> نام کاربری </label>
+                                        <div class="uk-form-controls uk-inline">
+                                            <span class="uk-form-icon" uk-icon="icon: user"></span>
+                                            <input class="uk-input uk-form-width-large" id="student-username"
+                                                type="text">
+                                        </div>
+                                    </div> <!-- field1 -->
+                                    <div class="uk-margin">
+                                        <label class="uk-form-label" for="student-username"> رمز عبور </label>
+                                        <div class="uk-form-controls uk-inline">
+                                            <span class="uk-form-icon" uk-icon="icon: lock"></span>
+                                            <input class="uk-input uk-form-width-large" id="student-username"
+                                                type="text">
+                                        </div>
+                                    </div> <!-- field2 -->
+                                    <div uk-grid>
+                                        <div class="uk-width-1-2">
+                                            <a href=""> فراموش؟ </a>
+                                        </div>
+                                        <div class="uk-width-1-2">
+                                            <label><input class="uk-checkbox" type="checkbox"> دائم </label>
+                                        </div>
+                                        <div class="uk-width-expand">
+                                            <button class="uk-button uk-button-primary uk-width-1-1"> 
+                                                ورود
+                                            </button>
+                                        </div>
+                                    </div> <!-- form options -->
+                                </form>
+                            </div> <!-- card body and form content teacher -->    
                         </div> <!-- card -->
 
                     </div> <!-- container small -->
                 </div> <!-- section -->
             </div> <!-- left column -->
         </div> <!-- main grid -->
-
+    </login>
 
     </main> <!-- Main Content of the Pages goes here -->
     <footer  class="es-footer">

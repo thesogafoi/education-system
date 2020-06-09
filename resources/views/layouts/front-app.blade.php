@@ -17,7 +17,7 @@
 </div>
 
 @yield('script')
-<script src="{{asset('js/app.js')}}"></script>
+<script src="{{asset('js/front/app.js')}}"></script>
 <script src="{{asset('js/uikit.min.js')}}"></script>
 <script src="{{asset('js/uikit-icons.min.js')}}"></script>
 </body>
