@@ -44,8 +44,6 @@ Login
     <!-- menus and header related parts -->
 
     <main  class="es-main">
-
-
     <login inline-template>
         <div class="uk-grid-match uk-grid-collapse uk-child-width-expands@s uk-text-center" uk-grid>
             <div class="uk-width-1-2@s">
@@ -197,5 +195,4 @@ Login
         </div>
     </footer>
     <!--All the footer content-->
-something
 @endsection
