@@ -6,8 +6,8 @@
 <script>
 export default {
     data: () => ({
-        userType: "teacher", // type of user for handle auth tab
-        formType: "register", // type of form for handle auth form tab
+        userType: "student", // type of user for handle auth tab
+        formType: "login", // type of form for handle auth form tab
     }),
     methods: {
         toggleUserType(){

@@ -1916,9 +1916,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      userType: "teacher",
+      userType: "student",
       // type of user for handle auth tab
-      formType: "register" // type of form for handle auth form tab
+      formType: "login" // type of form for handle auth form tab
 
     };
   },

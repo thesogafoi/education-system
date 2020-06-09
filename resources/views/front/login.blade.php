@@ -70,8 +70,8 @@ Login
                                     <li><a href="" @click="toggleUserType()"> اعضا </a></li>
                                 </ul>
                                 <ul v-if=" userType != 'teacher'" class="uk-child-width-expand" uk-tab>
-                                    <li><a href="" @click="toggleFormType()"> ورود </a></li>
-                                    <li class="uk-active"><a href="" @click="toggleFormType()"> ثبت نام </a></li>
+                                    <li class="uk-active"><a href="" @click="toggleFormType()"> ورود </a></li>
+                                    <li><a href="" @click="toggleFormType()"> ثبت نام </a></li>
                                 </ul>
                             </div> <!-- form tabs -->
                             <div v-if=" userType == 'student' && formType == 'register' " class="uk-card-body uk-text-right">
@@ -145,7 +145,7 @@ Login
                                 </form>
                             </div> <!-- card body and login form content student -->
 
-                            <div v-if=" userType == 'teacher'" class="uk-card-body uk-text-right t">
+                            <div v-if=" userType == 'teacher'" class="uk-card-body uk-text-right">
                                 <form class="uk-form-stacked" action="">
                                     <div class="uk-margin">
                                         <label class="uk-form-label" for="student-username"> نام کاربری </label>
