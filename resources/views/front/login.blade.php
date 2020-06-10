@@ -64,12 +64,12 @@ Login
                             <div class="uk-card-body">
                                 <h3 class="uk-card-title"> خوش آمدید </h3>
                                 <ul class="uk-child-width-expand" uk-tab>
-                                    <li class="uk-active"><a href="" @click="toggleUserType()"> دانش آموزان </a></li>
-                                    <li><a href="" @click="toggleUserType()"> اعضا </a></li>
+                                    <li class="uk-active"><a href="" @click="toggleUserType('student')"> دانش آموزان </a></li>
+                                    <li><a href="" @click="toggleUserType('teacher')"> اعضا </a></li>
                                 </ul>
                                 <ul v-if=" userType != 'teacher'" class="uk-child-width-expand" uk-tab>
-                                    <li class="uk-active"><a href="" @click="toggleFormType()"> ورود </a></li>
-                                    <li><a href="" @click="toggleFormType()"> ثبت نام </a></li>
+                                    <li class="uk-active"><a href="" @click="toggleFormType('login')"> ورود </a></li>
+                                    <li><a href="" @click="toggleFormType('register')"> ثبت نام </a></li>
                                 </ul>
                             </div> <!-- form tabs -->
                             <div v-if=" userType == 'student' && formType == 'register' " class="uk-card-body uk-text-right">
