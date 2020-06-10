@@ -15,12 +15,9 @@ class LoginController extends Controller
     public function login(Request $request, $loginGuard)
     {
         $credentials = $request->only('username', 'password');
+        $this->loginValidator($loginGuard);
         if (Auth::guard("{$loginGuard}")->attempt($credentials)) {
-            if ($loginGuard == 'teacher') {
-                return redirect(route('teacher.dashboard'));
-            } elseif ($loginGuard == 'student') {
-                return redirect(route('student.dashboard'));
-            }
+            return $this->redirectRules($loginGuard);
         }
 
         return false;
@@ -36,5 +33,23 @@ class LoginController extends Controller
         Auth::guard("{$loginGuard}")->logout();
 
         return redirect(route('home'));
+    }
+
+    protected function redirectRules($loginGuard)
+    {
+        if ($loginGuard == 'teacher') {
+            return redirect(route('teacher.dashboard'));
+        } elseif ($loginGuard == 'student') {
+            return redirect(route('student.dashboard'));
+        }
+    }
+
+    protected function loginValidator($loginGuard, Request $request)
+    {
+        $rules = [
+            'username' => "required|exists:{$loginGuard}s|max:100",
+            'password' => 'required|string|max:255'
+        ];
+        $request->validate($rules);
     }
 }

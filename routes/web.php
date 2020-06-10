@@ -17,6 +17,8 @@ Route::get('/', function () {
     return view('welcome');
 })->name('home');
 
+// Register controller
+Route::post('/register/student', 'Auth\RegisterController@registerStudent')->name('register.student');
 // login page Routes
 Route::get('/login', 'Auth\LoginController@showLoginForm')->name('login')->middleware('logout');
 Route::post('/login/{loginGuard}', 'Auth\LoginController@login')->middleware('logout');

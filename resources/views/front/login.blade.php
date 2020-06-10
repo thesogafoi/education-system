@@ -73,13 +73,14 @@ Login
                                 </ul>
                             </div> <!-- form tabs -->
                             <div v-if=" userType == 'student' && formType == 'register' " class="uk-card-body uk-text-right">
-                                <form class="uk-form-stacked" action="">
+                                <form class="uk-form-stacked" action="{{route('register.student')}}" method="POST">
+                                    {{csrf_field()}}
                                     <div class="uk-margin">
                                         <label class="uk-form-label" for="student-username"> نام کاربری </label>
                                         <div class="uk-form-controls uk-inline">
                                             <span class="uk-form-icon" uk-icon="icon: user"></span>
                                             <input class="uk-input uk-form-width-large" id="student-username"
-                                                type="text">
+                                                type="text" name="username">
                                         </div>
                                     </div> <!-- field1 -->
                                     <div class="uk-margin">
@@ -87,7 +88,7 @@ Login
                                         <div class="uk-form-controls uk-inline">
                                             <span class="uk-form-icon" uk-icon="icon: lock"></span>
                                             <input class="uk-input uk-form-width-large" id="student-username"
-                                                type="text">
+                                                type="text" name="password">
                                         </div>
                                     </div> <!-- field2 -->
                                     <div class="uk-margin">
@@ -95,7 +96,7 @@ Login
                                         <div class="uk-form-controls uk-inline">
                                             <span class="uk-form-icon" uk-icon="icon: lock"></span>
                                             <input class="uk-input uk-form-width-large" id="student-username"
-                                                type="text">
+                                                type="text" name="password_confirmed">
                                         </div>
                                     </div> <!-- field3 -->
                                     <div uk-grid>
@@ -103,7 +104,7 @@ Login
                                             <label><input class="uk-checkbox" type="checkbox"> دائم </label>
                                         </div>
                                         <div class="uk-width-expand">
-                                            <button class="uk-button uk-button-primary uk-width-1-1"> آغاز ثبت نام
+                                            <button type="submit" class="uk-button uk-button-primary uk-width-1-1"> آغاز ثبت نام
                                             </button>
                                         </div>
                                     </div> <!-- form options -->
