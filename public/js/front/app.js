@@ -1923,19 +1923,11 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   methods: {
-    toggleUserType: function toggleUserType() {
-      if (this.userType == "teacher") {
-        this.userType = "student";
-      } else {
-        this.userType = "teacher";
-      }
+    toggleUserType: function toggleUserType(value) {
+      this.userType = value;
     },
-    toggleFormType: function toggleFormType() {
-      if (this.formType == "register") {
-        this.formType = "login";
-      } else {
-        this.formType = "register";
-      }
+    toggleFormType: function toggleFormType(value) {
+      this.formType = value;
     }
   },
   created: function created() {}
