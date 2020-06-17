@@ -15,6 +15,22 @@ class RegisterController extends Controller
         $student = new Student();
         $student->username = $request->username;
         $student->password = Hash::make($request->password);
+        $this->loginValidator($request, 'student');
+
+        return $this->redirectIfStudentCreated($student, $request);
+    }
+
+    protected function loginValidator(Request $request, $loginGuard)
+    {
+        $rules = [
+            'username' => 'required|max:100',
+            'password' => 'required|string|max:255|confirmed'
+        ];
+        $request->validate($rules);
+    }
+
+    protected function redirectIfStudentCreated($student, $request)
+    {
         if ($student->save()) {
             $credentials = ['username' => $request->username, 'password' => $request->password];
             Auth::guard('student')->attempt($credentials);

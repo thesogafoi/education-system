@@ -16,9 +16,9 @@ class LogOutMiddleware
      */
     public function handle($request, Closure $next)
     {
-        if (Auth::guard('teacher')->check() || Auth::guard('student')->check()) {
-            if (Auth::guard('teacher')->check()) {
-                return redirect(route('teacher.dashboard'))->with(['message' => 'ابتدا باید از اکانت خود خارج شید']);
+        if (Auth::guard('staff')->check() || Auth::guard('student')->check()) {
+            if (Auth::guard('staff')->check()) {
+                return redirect(route('staff.dashboard'))->with(['message' => 'ابتدا باید از اکانت خود خارج شید']);
             } elseif (Auth::guard('student')->check()) {
                 return redirect(route('student.dashboard'))->with(['message' => 'ابتدا باید از اکانت خود خارج شید']);
             }

@@ -3,7 +3,7 @@
 namespace Tests;
 
 use App\Student;
-use App\Teacher;
+use App\Staff;
 use App\User;
 use Illuminate\Foundation\Testing\TestCase as BaseTestCase;
 
@@ -21,14 +21,14 @@ abstract class TestCase extends BaseTestCase
         return $user;
     }
 
-    public function signInTeacher($teacher = null)
+    public function signInStaff($staff = null)
     {
-        if ($teacher === null) {
-            $teacher = create(Teacher::class);
+        if ($staff === null) {
+            $staff = create(Staff::class);
         }
-        $this->actingAs($teacher, 'teacher');
+        $this->actingAs($staff, 'staff');
 
-        return $teacher;
+        return $staff;
     }
 
     public function signInStudent($student = null)

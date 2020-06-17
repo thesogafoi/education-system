@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-class TeacherDashboardController extends Controller
+class StaffDashboardController extends Controller
 {
     public function index()
     {

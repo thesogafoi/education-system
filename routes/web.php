@@ -24,8 +24,15 @@ Route::get('/login', 'Auth\LoginController@showLoginForm')->name('login')->middl
 Route::post('/login/{loginGuard}', 'Auth\LoginController@login')->middleware('logout');
 Route::post('/logout/{loginGuard}', 'Auth\LoginController@logout')->middleware('login');
 
+// Reset password controller
+Route::post('/reset/password/{resetPasswordGuard}', 'Auth\ResetPasswordController@sendMailToUsers')->name('reset.password.student.form')->middleware('logout');
+Route::put('/page/reset/password/{token}', 'Auth\ResetPasswordController@resetPassword')->name('reset.password')->middleware('logout');
+Route::get('/page/reset/password/{token}', 'Auth\ResetPasswordController@resetPasswordPage')->name('reset.password.page')->middleware('logout');
+
+Route::get('/reset/password/student', 'Auth\ResetPasswordController@showResetPasswordFormForStudent')->name('reset.password.student.form')->middleware('logout');
+Route::get('/reset/password/staff', 'Auth\ResetPasswordController@showResetPasswordFormForStaff')->name('reset.password.staff.form')->middleware('logout');
 // Student Dashboard Routes
 Route::get('/dashboard', 'StudentDashboardController@index')->name('student.dashboard');
 
-// Teacher Dashboard Routes
-Route::get('/admin/dashboard', 'TeacherDashboardController@index')->name('teacher.dashboard');
+// Staff Dashboard Routes
+Route::get('/admin/dashboard', 'StaffDashboardController@index')->name('staff.dashboard');

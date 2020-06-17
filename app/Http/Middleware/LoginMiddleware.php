@@ -16,7 +16,7 @@ class LoginMiddleware
      */
     public function handle($request, Closure $next)
     {
-        if (Auth::guard('teacher')->check() || Auth::guard('student')->check()) {
+        if (Auth::guard('staff')->check() || Auth::guard('student')->check()) {
             return $next($request);
         } else {
             abort(403, 'شما دسترسی به این قسمت ندارید');

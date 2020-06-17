@@ -1,7 +1,7 @@
 <?php
 
+use App\Staff;
 use App\Student;
-use App\Teacher;
 use Illuminate\Support\Facades\Hash;
 
 function create($model, $numbers = 1, $customData = [])
@@ -28,15 +28,15 @@ function createStudentManually()
     return Student::whereUsername($student->username)->first();
 }
 
-function createTeacherManually()
+function createStaffManually()
 {
-    $teacher = new Teacher();
-    $teacher->username = 'thesogafoi';
-    $teacher->email = 'example@gmail.com';
-    $teacher->password = Hash::make('021051');
-    $teacher->firstname = 'alireza';
-    $teacher->lastname = 'ghoreishi';
-    $teacher->save();
+    $staff = new Staff();
+    $staff->username = 'thesogafoi';
+    $staff->email = 'example@gmail.com';
+    $staff->password = Hash::make('021051');
+    $staff->firstname = 'alireza';
+    $staff->lastname = 'ghoreishi';
+    $staff->save();
 
-    return Teacher::whereUsername($teacher->username)->first();
+    return Staff::whereUsername($staff->username)->first();
 }

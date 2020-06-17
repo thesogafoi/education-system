@@ -3,46 +3,6 @@
 Login
 @endsection
 @section('content')
-<header class="es-header">
-        <nav class="uk-navbar-container" uk-navbar>
-            <div class="uk-navbar-right">
-                <a class="uk-navbar-toggle uk-hidden@s" uk-navbar-toggle-icon href="#offCanvasMenu"
-                    uk-toggle="target: #offCanvasMenu"></a>
-                <ul class="uk-navbar-nav uk-visible@s">
-                    <li class="uk-active"><a href="">خانه</a></li>
-
-                    <li><a href=""> بلاگ </a></li>
-                </ul>
-            </div><!-- uk-navbar-right -->
-            <div class="uk-navbar-left">
-                <a href="" class="uk-navbar-item uk-logo">LOGO</a>
-            </div><!-- uk-navbar-left -->
-
-        </nav> <!-- MAIN MENU -->
-        <div id="offCanvasMenu" uk-offcanvas="overlay: true">
-            <div class="uk-offcanvas-bar uk-flex uk-flex-column">
-
-                <ul class="uk-nav uk-nav-primary uk-nav-center uk-margin-auto-vertical">
-                    <li class="uk-active"><a href="#">Active</a></li>
-                    <li class="uk-parent">
-                        <a href="#">Parent</a>
-                        <ul class="uk-nav-sub">
-                            <li><a href="#">Sub item</a></li>
-                            <li><a href="#">Sub item</a></li>
-                        </ul>
-                    </li>
-                    <li class="uk-nav-header">Header</li>
-                    <li><a href="#"><span class="uk-margin-small-right" uk-icon="icon: table"></span> Item</a></li>
-                    <li><a href="#"><span class="uk-margin-small-right" uk-icon="icon: thumbnails"></span> Item</a></li>
-                    <li class="uk-nav-divider"></li>
-                    <li><a href="#"><span class="uk-margin-small-right" uk-icon="icon: trash"></span> Item</a></li>
-                </ul>
-
-            </div> <!-- off canvas menu content -->
-        </div> <!-- off canvas menu for mobile only  -->
-    </header>
-    <!-- menus and header related parts -->
-
     <main  class="es-main">
     <login inline-template>
         <div class="uk-grid-match uk-grid-collapse uk-child-width-expands@s uk-text-center" uk-grid>
@@ -80,7 +40,7 @@ Login
                                         <div class="uk-form-controls uk-inline">
                                             <span class="uk-form-icon" uk-icon="icon: user"></span>
                                             <input class="uk-input uk-form-width-large" id="student-username"
-                                                type="text" name="username">
+                                                type="text" name="username" value="{{old('username')}}">
                                         </div>
                                     </div> <!-- field1 -->
                                     <div class="uk-margin">
@@ -96,12 +56,12 @@ Login
                                         <div class="uk-form-controls uk-inline">
                                             <span class="uk-form-icon" uk-icon="icon: lock"></span>
                                             <input class="uk-input uk-form-width-large" id="student-username"
-                                                type="text" name="password_confirmed">
+                                                type="text" name="password_confirmation">
                                         </div>
                                     </div> <!-- field3 -->
                                     <div uk-grid>
                                         <div class="uk-width-1-2">
-                                            <label><input class="uk-checkbox" type="checkbox"> دائم </label>
+                                            <label><input class="uk-checkbox" type="checkbox" name="remember"> دائم </label>
                                         </div>
                                         <div class="uk-width-expand">
                                             <button type="submit" class="uk-button uk-button-primary uk-width-1-1"> آغاز ثبت نام
@@ -111,13 +71,14 @@ Login
                                 </form>
                             </div> <!-- card body and register form content student -->
                             <div v-if=" userType == 'student' && formType == 'login' " class="uk-card-body uk-text-right">
-                                <form class="uk-form-stacked" action="">
+                                <form class="uk-form-stacked" action="/login/student" method="POST">
+                                    {{csrf_field()}}
                                     <div class="uk-margin">
                                         <label class="uk-form-label" for="student-username"> نام کاربری </label>
                                         <div class="uk-form-controls uk-inline">
                                             <span class="uk-form-icon" uk-icon="icon: user"></span>
                                             <input class="uk-input uk-form-width-large" id="student-username"
-                                                type="text">
+                                                type="text" name="username" value="{{old('username')}}">
                                         </div>
                                     </div> <!-- field1 -->
                                     <div class="uk-margin">
@@ -125,15 +86,15 @@ Login
                                         <div class="uk-form-controls uk-inline">
                                             <span class="uk-form-icon" uk-icon="icon: lock"></span>
                                             <input class="uk-input uk-form-width-large" id="student-username"
-                                                type="text">
+                                                type="text" name="password">
                                         </div>
                                     </div> <!-- field2 -->
                                     <div uk-grid>
                                         <div class="uk-width-1-2">
-                                            <a href=""> فراموش؟ </a>
+                                            <a href="{{route('reset.password.student.form')}}"> فراموش؟ </a>
                                         </div>
                                         <div class="uk-width-1-2">
-                                            <label><input class="uk-checkbox" type="checkbox"> دائم </label>
+                                            <label><input class="uk-checkbox" type="checkbox" name="remember"> دائم </label>
                                         </div>
                                         <div class="uk-width-expand">
                                             <button class="uk-button uk-button-primary uk-width-1-1"> 
@@ -145,13 +106,14 @@ Login
                             </div> <!-- card body and login form content student -->
 
                             <div v-if=" userType == 'teacher'" class="uk-card-body uk-text-right">
-                                <form class="uk-form-stacked" action="">
+                                <form class="uk-form-stacked" action="login/teacher" method="POST">
+                                    {{csrf_field()}}
                                     <div class="uk-margin">
                                         <label class="uk-form-label" for="student-username"> نام کاربری </label>
                                         <div class="uk-form-controls uk-inline">
                                             <span class="uk-form-icon" uk-icon="icon: user"></span>
                                             <input class="uk-input uk-form-width-large" id="student-username"
-                                                type="text">
+                                                type="text" name="username" value="{{old('username')}}">
                                         </div>
                                     </div> <!-- field1 -->
                                     <div class="uk-margin">
@@ -159,15 +121,15 @@ Login
                                         <div class="uk-form-controls uk-inline">
                                             <span class="uk-form-icon" uk-icon="icon: lock"></span>
                                             <input class="uk-input uk-form-width-large" id="student-username"
-                                                type="text">
+                                                type="text" name="password">
                                         </div>
                                     </div> <!-- field2 -->
                                     <div uk-grid>
                                         <div class="uk-width-1-2">
-                                            <a href=""> فراموش؟ </a>
+                                            <a href="{{route('reset.password.staff.form')}}"> فراموش؟ </a>
                                         </div>
                                         <div class="uk-width-1-2">
-                                            <label><input class="uk-checkbox" type="checkbox"> دائم </label>
+                                            <label><input class="uk-checkbox" type="checkbox" name="remember"> دائم </label>
                                         </div>
                                         <div class="uk-width-expand">
                                             <button class="uk-button uk-button-primary uk-width-1-1"> 
@@ -176,7 +138,18 @@ Login
                                         </div>
                                     </div> <!-- form options -->
                                 </form>
-                            </div> <!-- card body and form content teacher -->    
+                            </div> <!-- card body and form content teacher -->
+                            @if($errors->any())
+                            <div class="es-form-feedback">
+                                <div class="uk-alert-danger" uk-alert>
+                                    <ul class="es-feedback-errors">
+                                        @foreach($errors->all() as $error)
+                                        <li class="es-feedback-error"> {{$error}}</li>
+                                        @endforeach
+                                    </ul>
+                                </div> <!-- danger alert -->
+                            </div> <!-- es-form-feedback -->
+                            @endif
                         </div> <!-- card -->
 
                     </div> <!-- container small -->
@@ -186,14 +159,5 @@ Login
     </login>
 
     </main> <!-- Main Content of the Pages goes here -->
-    <footer  class="es-footer">
-        <div>
-            <div class="uk-container">
-                <div class="uk-padding-large">
-                    فوتر
-                </div>
-            </div>
-        </div>
-    </footer>
-    <!--All the footer content-->
+    
 @endsection

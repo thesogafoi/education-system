@@ -19,6 +19,7 @@ class CreateStudentsTable extends Migration
             $table->string('email', 100)->nullable()->unique();
             $table->string('firstname', 100)->nullable();
             $table->string('lastname', 100)->nullable();
+            $table->string('reset_password_token', 255)->nullable();
             $table->string('password', 255);
             $table->rememberToken();
             $table->timestamps();
