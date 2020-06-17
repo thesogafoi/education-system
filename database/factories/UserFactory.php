@@ -2,10 +2,12 @@
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 
+use App\Staff;
+use App\StaffRoles;
 use App\Student;
-use App\Teacher;
 use App\User;
 use Faker\Generator as Faker;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 
 /*
@@ -29,10 +31,10 @@ $factory->define(User::class, function (Faker $faker) {
     ];
 });
 
-$factory->define(Teacher::class, function (Faker $faker) {
+$factory->define(Staff::class, function (Faker $faker) {
     return [
         'username' => $faker->unique()->name,
-        'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi',
+        'password' => Hash::make('021051'),
         'firstname' => $faker->unique()->firstName(),
         'email' => $faker->unique()->email,
         'lastname' => $faker->unique()->lastName
@@ -42,9 +44,15 @@ $factory->define(Teacher::class, function (Faker $faker) {
 $factory->define(Student::class, function (Faker $faker) {
     return [
         'username' => $faker->unique()->name,
-        'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi',
+        'password' => Hash::make('021051'),
         'firstname' => $faker->unique()->firstName(),
         'email' => $faker->unique()->email,
         'lastname' => $faker->unique()->lastName
+    ];
+});
+
+$factory->define(StaffRoles::class, function (Faker $faker) {
+    return [
+        'title' => 'admin'
     ];
 });

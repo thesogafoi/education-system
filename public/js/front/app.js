@@ -31821,8 +31821,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\Mahdi\Desktop\es\resources\js\front\app.js */"./resources/js/front/app.js");
-module.exports = __webpack_require__(/*! C:\Users\Mahdi\Desktop\es\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /home/sogafoi/Sites/es/resources/js/front/app.js */"./resources/js/front/app.js");
+module.exports = __webpack_require__(/*! /home/sogafoi/Sites/es/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

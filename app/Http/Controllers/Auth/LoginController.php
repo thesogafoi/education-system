@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use App\Teacher;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -11,14 +10,15 @@ class LoginController extends Controller
 {
     public function __construct()
     {
-        // $this->middleware('guest:teacher')->except('logout');
     }
 
     public function login(Request $request, $loginGuard)
     {
         $credentials = $request->only('username', 'password');
-        if (Auth::guard("{$loginGuard}")->attempt($credentials)) {
-            return true;
+        $this->loginValidator($request, $loginGuard);
+        // check in login guard (student or staff ) have we specific username or password
+        if (Auth::guard("{$loginGuard}")->attempt($credentials, $request->filled('remember'))) {
+            return $this->redirectRules($loginGuard);
         }
 
         return false;
@@ -29,7 +29,28 @@ class LoginController extends Controller
         return view('front.login');
     }
 
-    public function logout()
+    public function logout($loginGuard)
     {
+        Auth::guard("{$loginGuard}")->logout();
+
+        return redirect(route('home'));
+    }
+
+    protected function redirectRules($loginGuard)
+    {
+        if ($loginGuard == 'staff') {
+            return redirect(route('staff.dashboard'));
+        } elseif ($loginGuard == 'student') {
+            return redirect(route('student.dashboard'));
+        }
+    }
+
+    protected function loginValidator(Request $request, $loginGuard)
+    {
+        $rules = [
+            'username' => "required|exists:{$loginGuard}s|max:100",
+            'password' => 'required|string|max:255'
+        ];
+        $request->validate($rules);
     }
 }

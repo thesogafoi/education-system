@@ -45,9 +45,9 @@ return [
             'provider' => 'users',
             'hash' => false,
         ],
-        'teacher' => [
+        'staff' => [
             'driver' => 'session',
-            'provider' => 'teachers'
+            'provider' => 'staffs'
         ],
         'student' => [
             'driver' => 'session',
@@ -78,9 +78,9 @@ return [
             'model' => App\User::class,
         ],
 
-        'teachers' => [
+        'staffs' => [
             'driver' => 'eloquent',
-            'model' => App\Teacher::class,
+            'model' => App\staff::class,
         ],
 
         'students' => [
@@ -115,8 +115,8 @@ return [
             'expire' => 60,
             'throttle' => 60,
         ],
-        'teachers' => [
-            'provider' => 'teachers',
+        'staffs' => [
+            'provider' => 'staffs',
             'table' => 'password_resets',
             'expire' => 15,
         ],
