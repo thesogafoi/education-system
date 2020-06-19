@@ -2,6 +2,8 @@
 
 namespace Tests\Feature;
 
+use App\Notifications\StudentCreated;
+use App\Staff;
 use App\Student;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Notification;
@@ -16,7 +18,10 @@ class StaffNotificationTest extends TestCase
     {
         Notification::fake();
         Notification::assertNothingSent();
+        create(Staff::class, 2);
         $student = create(Student::class);
-        // send notification too all staffs
+        Staff::adminStaffs()->map(function ($staff) {
+            Notification::assertSentTo($staff, StudentCreated::class);
+        });
     }
 }

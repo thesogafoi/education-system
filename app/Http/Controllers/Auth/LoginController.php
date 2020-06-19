@@ -22,7 +22,7 @@ class LoginController extends Controller
             return $this->redirectRules($loginGuard);
         }
 
-        return false;
+        return back()->withErrors('نام کاربری یا رمز وارد شده صحیح نمیباشد');
     }
 
     public function showLoginForm()

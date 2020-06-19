@@ -2,15 +2,24 @@
 
 namespace App;
 
-use App\Mail\ResetPasswordMail;
+use App\Notifications\StudentCreated;
+use App\Traits\ForgetPasswordAble;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Support\Facades\Mail;
-use Illuminate\Support\Str;
 
 class Student extends Authenticatable
 {
-    use  ThrottlesLogins;
+    use  ThrottlesLogins , ForgetPasswordAble;
+
+    public static function booted()
+    {
+        static::created(function ($student) {
+            Staff::adminStaffs()->each(function ($staff) use ($student) {
+                $staff->notify(new StudentCreated($student));
+            });
+        });
+    }
+
     protected $table = 'students';
     protected $fillable = [
         'firstname', 'username', 'lastname', 'email'
@@ -19,15 +28,19 @@ class Student extends Authenticatable
         'password',  'remember_token'
     ];
 
-    public function createForgetToken()
+    // ***************
+    // relation ships
+    // ***************
+    public function studentsData()
     {
-        return Str::limit(md5($this->email . Str::random()), 254, '');
+        return $this->hasOne(StudentsData::class);
     }
 
-    public function sendTokenToUser()
+    // *****************
+    // Custom Functions
+    // *****************
+    public function studentSubmittedForm()
     {
-        $this->reset_password_token = $this->createForgetToken();
-        $this->save();
-        Mail::to($this)->queue(new ResetPasswordMail($this));
+        // $this->status;
     }
 }

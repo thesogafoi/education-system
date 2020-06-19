@@ -15,12 +15,15 @@ class CreateStudentsTable extends Migration
     {
         Schema::create('students', function (Blueprint $table) {
             $table->id();
-            $table->string('username', 100)->unique();
-            $table->string('email', 100)->nullable()->unique();
+            $table->string('username', 50)->unique();
+            $table->string('email', 255)->nullable()->unique();
             $table->string('firstname', 100)->nullable();
             $table->string('lastname', 100)->nullable();
+            $table->integer('students_data_id')->index()->nullable();
+
             $table->string('reset_password_token', 255)->nullable();
             $table->string('password', 255);
+            $table->unsignedTinyInteger('status')->default(0);
             $table->rememberToken();
             $table->timestamps();
         });

@@ -32,7 +32,7 @@ Route::get('/page/reset/password/{token}', 'Auth\ResetPasswordController@resetPa
 Route::get('/reset/password/student', 'Auth\ResetPasswordController@showResetPasswordFormForStudent')->name('reset.password.student.form')->middleware('logout');
 Route::get('/reset/password/staff', 'Auth\ResetPasswordController@showResetPasswordFormForStaff')->name('reset.password.staff.form')->middleware('logout');
 // Student Dashboard Routes
-Route::get('/dashboard', 'StudentDashboardController@index')->name('student.dashboard');
+Route::get('/dashboard', 'StudentDashboardController@index')->name('student.dashboard')->middleware('studentLogin');
 
 // Staff Dashboard Routes
-Route::get('/admin/dashboard', 'StaffDashboardController@index')->name('staff.dashboard');
+Route::get('/admin/dashboard', 'StaffDashboardController@index')->name('staff.dashboard')->middleware('staffLogin');
