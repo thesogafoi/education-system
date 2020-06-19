@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Unit;
+namespace Tests\Feature;
 
 use App\Mail\ResetPasswordMail;
 use Illuminate\Foundation\Testing\RefreshDatabase;

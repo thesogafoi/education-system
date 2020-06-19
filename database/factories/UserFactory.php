@@ -37,6 +37,34 @@ $factory->define(Staff::class, function (Faker $faker) {
         'password' => Hash::make('021051'),
         'firstname' => $faker->unique()->firstName(),
         'email' => $faker->unique()->email,
+        'role_id' => function () {
+            if (!StaffRoles::whereTitle('admin')->get()->isEmpty()) {
+                return StaffRoles::whereTitle('admin')->first()->id;
+            } else {
+                factory(StaffRoles::class)->create(['title' => 'admin']);
+
+                return StaffRoles::whereTitle('admin')->first()->id;
+            }
+        },
+        'lastname' => $faker->unique()->lastName
+    ];
+});
+
+$factory->state(Staff::class, 'teacher', function (Faker $faker) {
+    return [
+        'username' => $faker->unique()->name,
+        'password' => Hash::make('021051'),
+        'firstname' => $faker->unique()->firstName(),
+        'email' => $faker->unique()->email,
+        'role_id' => function () {
+            if (!StaffRoles::whereTitle('teacher')->get()->isEmpty()) {
+                return StaffRoles::whereTitle('teacher')->first()->id;
+            } else {
+                factory(StaffRoles::class)->create(['title' => 'teacher']);
+
+                return StaffRoles::whereTitle('teacher')->first()->id;
+            }
+        },
         'lastname' => $faker->unique()->lastName
     ];
 });

@@ -15,6 +15,7 @@ class StaffsTable extends Migration
     {
         Schema::create('staffs', function (Blueprint $table) {
             $table->id();
+            $table->integer('role_id')->index()->nullable();
             $table->string('username', 100)->unique();
             $table->string('email', 100)->nullable()->unique();
             $table->string('firstname', 100)->nullable();

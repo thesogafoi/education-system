@@ -24,7 +24,25 @@ class Staff extends Authenticatable
     // Relation Ships Section
     public function role()
     {
-        return $this->belongsTo(StaffRoles::class);
+        return $this->belongsTo(StaffRoles::class)->first()->title;
+    }
+
+    // ******************
+    // Custom functions
+    // ******************
+
+    public static function adminStaffs()
+    {
+        return static::all()->filter(function ($model) {
+            return $model->role() == 'admin';
+        });
+    }
+
+    public static function teacherStaffs()
+    {
+        return static::all()->filter(function ($model) {
+            return $model->role() == 'teacher';
+        });
     }
 
     // reset password

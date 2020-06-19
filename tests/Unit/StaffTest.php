@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Feature;
+namespace Tests\Unit;
 
 use App\Staff;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -24,5 +24,21 @@ class StaffTest extends TestCase
         ]);
     }
 
-    // **************************************
+    /** @test */
+    public function we_can_group_all_admin_staff()
+    {
+        create(Staff::class, 5);
+        factory(Staff::class)->states('teacher')->create();
+        $this->assertDatabaseHas('staff_roles', [
+            'title' => 'admin',
+            'title' => 'teacher'
+        ]);
+
+        foreach (Staff::adminStaffs() as $value) {
+            $this->assertEquals($value->role(), 'admin');
+        }
+        foreach (Staff::teacherStaffs() as $value) {
+            $this->assertEquals($value->role(), 'teacher');
+        }
+    }
 }
