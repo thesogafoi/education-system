@@ -11,6 +11,8 @@ class StudentsData extends Migration
         Schema::create('students_data', function (Blueprint $table) {
             $table->id();
 
+            $table->integer('student_id')->unsigned()->index()->nullable();
+
             $table->string('fathersname', 100)->nullable();
             $table->date('birthdate')->nullable();
             $table->string('studentsid', 10)->nullable();
@@ -30,7 +32,7 @@ class StudentsData extends Migration
             $table->string('fatherseducation', 100)->nullable();
             $table->string('fathersjob', 100)->nullable();
             $table->string('fathersphone', 100)->nullable();
-            $table->string('fathersjobsaddress', 100)->nullable();
+            $table->string('fathersjobaddress', 100)->nullable();
 
             $table->string('mothersfirstname', 100)->nullable();
             $table->string('motherslastname', 100)->nullable();
@@ -44,7 +46,7 @@ class StudentsData extends Migration
             $table->string('motherseducation', 100)->nullable();
             $table->string('mothersjob', 100)->nullable();
             $table->string('mothersphone', 100)->nullable();
-            $table->string('mothersjobsaddress', 100)->nullable();
+            $table->string('mothersjobaddress', 100)->nullable();
 
             $table->unsignedTinyInteger('numberofchildren')->nullable();
             $table->unsignedTinyInteger('numberofbrothers')->nullable();

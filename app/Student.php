@@ -14,6 +14,7 @@ class Student extends Authenticatable
     public static function booted()
     {
         static::created(function ($student) {
+            $student->studentsData()->create();
             Staff::adminStaffs()->each(function ($staff) use ($student) {
                 $staff->notify(new StudentCreated($student));
             });
@@ -41,6 +42,12 @@ class Student extends Authenticatable
     // *****************
     public function studentSubmittedForm()
     {
-        // $this->status;
+        $this->status = 1;
+        $this->save();
+    }
+
+    public function getRouteKeyName()
+    {
+        return 'username';
     }
 }

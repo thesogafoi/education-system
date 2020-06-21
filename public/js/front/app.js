@@ -1899,6 +1899,557 @@ module.exports = {
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/front/components/StudentsDataForm.vue?vue&type=script&lang=js&":
+/*!*********************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/front/components/StudentsDataForm.vue?vue&type=script&lang=js& ***!
+  \*********************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ({
+  props: ["oldValues"],
+  data: function data() {
+    return {
+      // Binding input
+      firstname: "",
+      lastname: "",
+      email: "",
+      fathersname: "",
+      birthdate: "",
+      studentsid: "",
+      serialnumberid: "",
+      issueplace: "",
+      birthplace: "",
+      fathersfirstname: "",
+      fatherslastname: "",
+      fathersfathersname: "",
+      fathersbirthdate: "",
+      fathersid: "",
+      fathersnationalid: "",
+      fathersserialnumberid: "",
+      fathersissueplace: "",
+      fathersbirthplace: "",
+      fatherseducation: "",
+      fathersjob: "",
+      fathersphone: "",
+      fathersjobaddress: "",
+      mothersfirstname: "",
+      motherslastname: "",
+      mothersfathersname: "",
+      mothersbirthdate: "",
+      mothersid: "",
+      mothersnationalid: "",
+      mothersserialnumberid: "",
+      mothersissueplace: "",
+      mothersbirthplace: "",
+      motherseducation: "",
+      mothersjob: "",
+      mothersphone: "",
+      mothersjobaddress: "",
+      numberofchildren: "",
+      numberofbrothers: "",
+      numberofsisters: "",
+      address: "",
+      homesphone: "",
+      postalcode: "",
+      exschool: "",
+      howfindus: "",
+      childtalent: "",
+      form_completer: "",
+      preschool_student_shift_bool: "",
+      student_service_bool: "",
+      // have we error or not
+      firstnameError: false,
+      lastnameError: false,
+      emailError: false,
+      fathersnameError: false,
+      birthdateError: false,
+      studentsidError: false,
+      serialnumberidError: false,
+      issueplaceError: false,
+      birthplaceError: false,
+      fathersfirstnameError: false,
+      fatherslastnameError: false,
+      fathersfathersnameError: false,
+      fathersbirthdateError: false,
+      fathersidError: false,
+      fathersnationalidError: false,
+      fathersserialnumberidError: false,
+      fathersissueplaceError: false,
+      fathersbirthplaceError: false,
+      fatherseducationError: false,
+      fathersjobError: false,
+      fathersphoneError: false,
+      fathersjobaddressError: false,
+      mothersfirstnameError: false,
+      motherslastnameError: false,
+      mothersfathersnameError: false,
+      mothersbirthdateError: false,
+      mothersidError: false,
+      mothersnationalidError: false,
+      mothersserialnumberidError: false,
+      mothersissueplaceError: false,
+      mothersbirthplaceError: false,
+      motherseducationError: false,
+      mothersjobError: false,
+      mothersphoneError: false,
+      mothersjobaddressError: false,
+      numberofchildrenError: false,
+      numberofbrothersError: false,
+      numberofsistersError: false,
+      addressError: false,
+      homesphoneError: false,
+      postalcodeError: false,
+      exschoolError: false,
+      howfindusError: false,
+      childtalentError: false,
+      form_completerError: false,
+      preschool_student_shift_boolError: false,
+      student_service_boolError: false,
+      // Error messages
+      firstnameErrorsMessage: [],
+      lastnameErrorsMessage: [],
+      emailErrorsMessage: [],
+      fathersnameErrorsMessage: [],
+      birthdateErrorsMessage: [],
+      studentsidErrorsMessage: [],
+      serialnumberidErrorsMessage: [],
+      issueplaceErrorsMessage: [],
+      birthplaceErrorsMessage: [],
+      fathersfirstnameErrorsMessage: [],
+      fatherslastnameErrorsMessage: [],
+      fathersfathersnameErrorsMessage: [],
+      fathersbirthdateErrorsMessage: [],
+      fathersidErrorsMessage: [],
+      fathersnationalidErrorsMessage: [],
+      fathersserialnumberidErrorsMessage: [],
+      fathersissueplaceErrorsMessage: [],
+      fathersbirthplaceErrorsMessage: [],
+      fatherseducationErrorsMessage: [],
+      fathersjobErrorsMessage: [],
+      fathersphoneErrorsMessage: [],
+      fathersjobaddressErrorsMessage: [],
+      mothersfirstnameErrorsMessage: [],
+      motherslastnameErrorsMessage: [],
+      mothersfathersnameErrorsMessage: [],
+      mothersbirthdateErrorsMessage: [],
+      mothersidErrorsMessage: [],
+      mothersnationalidErrorsMessage: [],
+      mothersserialnumberidErrorsMessage: [],
+      mothersissueplaceErrorsMessage: [],
+      mothersbirthplaceErrorsMessage: [],
+      motherseducationErrorsMessage: [],
+      mothersjobErrorsMessage: [],
+      mothersphoneErrorsMessage: [],
+      mothersjobaddressErrorsMessage: [],
+      numberofchildrenErrorsMessage: [],
+      numberofbrothersErrorsMessage: [],
+      numberofsistersErrorsMessage: [],
+      addressErrorsMessage: [],
+      homesphoneErrorsMessage: [],
+      postalcodeErrorsMessage: [],
+      exschoolErrorsMessage: [],
+      howfindusErrorsMessage: [],
+      childtalentErrorsMessage: [],
+      form_completerErrorsMessage: [],
+      preschool_student_shift_boolErrorsMessage: [],
+      student_service_boolErrorsMessage: [],
+      validationRules: {
+        firstname: {
+          required: "لطفا نام خود را وارد کنید"
+        },
+        lastname: {
+          required: "لطفا نام خانوادگی خود را وارد کنید"
+        },
+        email: {
+          required: "لطفا ایمیل خود را وارد کنید"
+        },
+        fathersname: {
+          required: "لطفا نام پدر را وارد کنید"
+        },
+        birthdate: {
+          required: "لطفا تاریخ تولد خود را وارد کنید"
+        },
+        studentsid: {
+          required: "لطفا شماره شناسنامه را وارد کنید",
+          numberOfCharacters: {
+            message: "این فیلد باید 10 رقم باشد",
+            charactersNumber: 10
+          }
+        },
+        serialnumberid: {
+          required: "لطفا سریال شناسنامه را وارد کنید"
+        },
+        issueplace: {
+          required: "لطفا محل صدور را وارد کنید"
+        },
+        birthplace: {
+          required: "لطفا محل تولد را وارد کنید"
+        },
+        fathersfirstname: {
+          required: "لطفا اسم پدر را وارد کنید"
+        },
+        fatherslastname: {
+          required: "لطفا نام خانوادگی پدر را وارد کنید"
+        },
+        fathersfathersname: {
+          required: "لطفا نام پدرِ پدرِ دانش آموز را وارد کنید"
+        },
+        fathersbirthdate: {
+          required: "لطفا تاریخ تولد پدر را وارد کنید"
+        },
+        fathersid: {
+          required: "لطفا شماره شناسنامه پدر را وارد کنید"
+        },
+        fathersnationalid: {
+          required: "لطفا کد ملی پدر را وارد کنید",
+          numberOfCharacters: {
+            message: "این فیلد باید 10 رقم باشد",
+            charactersNumber: 10
+          }
+        },
+        fathersserialnumberid: {
+          required: "لطفا سریال شناسنامه پدر را وارد کنید"
+        },
+        fathersissueplace: {
+          required: "لطفا محل صدور شناسنامه پدر را وارد کنید"
+        },
+        fathersbirthplace: {
+          required: "لطفا محل تولد پدر را وارد کنید"
+        },
+        fatherseducation: {
+          required: "لطفا میزان تحصیلات پدر را وارد کنید"
+        },
+        fathersjob: {
+          required: "لطفا شغل پدر را وارد کنید"
+        },
+        fathersphone: {
+          required: "لطفا شماره تلفن پدر را وارد کنید"
+        },
+        fathersjobaddress: {
+          required: "لطفا آدرس محل کار پدر را وارد کنید"
+        },
+        mothersfirstname: {
+          required: "لطفا اسم مادر را وارد کنید"
+        },
+        motherslastname: {
+          required: "لطفا نام خانوادگی مادر را وارد کنید"
+        },
+        mothersfathersname: {
+          required: "لطفا نام پدرِ مادرِ دانش آموز را وارد کنید"
+        },
+        mothersbirthdate: {
+          required: "لطفا تاریخ تولد مادر را وارد کنید"
+        },
+        mothersid: {
+          required: "لطفا شماره شناسنامه مادر را وارد کنید"
+        },
+        mothersnationalid: {
+          required: "لطفا کد ملی مادر را وارد کنید",
+          numberOfCharacters: {
+            message: "این فیلد باید 10 رقم باشد",
+            charactersNumber: 10
+          }
+        },
+        mothersserialnumberid: {
+          required: "لطفا سریال شناسنامه مادر را وارد کنید"
+        },
+        mothersissueplace: {
+          required: "لطفا محل صدور شناسنامه مادر را وارد کنید"
+        },
+        mothersbirthplace: {
+          required: "لطفا محل تولد مادر را وارد کنید"
+        },
+        motherseducation: {
+          required: "لطفا میزان تحصیلات مادر را وارد کنید"
+        },
+        mothersjob: {
+          required: "لطفا شغل مادر را وارد کنید"
+        },
+        mothersphone: {
+          required: "لطفا شماره تلفن مادر را وارد کنید"
+        },
+        mothersjobaddress: {
+          required: "لطفا آدرس محل کار مادر را وارد کنید"
+        },
+        numberofchildren: {
+          required: "لطفا تعداد فرزندان را وارد کنید"
+        },
+        numberofbrothers: {
+          required: "لطفا تعداد برادرانِ دانش آموز را وارد کنید"
+        },
+        numberofsisters: {
+          required: "لطفا تعداد خواهرانِ دانش آموز را وارد کنید"
+        },
+        address: {
+          required: "لطفا آدرس را وارد کنید"
+        },
+        homesphone: {
+          required: "لطفا شماره تلفن را وارد کنید"
+        },
+        postalcode: {
+          required: "لطفا کد پستی را وارد کنید"
+        },
+        howfindus: {
+          required: "لطفا به سوال بالا پاسخ دهید"
+        },
+        childtalent: {
+          required: "لطفا به سوال بالا پاسخ دهید"
+        },
+        form_completer: {
+          required: "لطفا به سوال بالا پاسخ دهید"
+        }
+      }
+    };
+  },
+  created: function created() {
+    var thisClass = this;
+
+    if (this.oldValues) {
+      Object.assign(this.$data, this.oldValues);
+    }
+  },
+  watch: {
+    firstname: function firstname() {
+      this.validation("firstname");
+    },
+    lastname: function lastname() {
+      this.validation("lastname");
+    },
+    email: function email() {
+      this.validation("email");
+    },
+    fathersname: function fathersname() {
+      this.validation("fathersname");
+    },
+    birthdate: function birthdate() {
+      this.validation("birthdate");
+    },
+    studentsid: function studentsid() {
+      this.validation("studentsid");
+    },
+    serialnumberid: function serialnumberid() {
+      this.validation("serialnumberid");
+    },
+    issueplace: function issueplace() {
+      this.validation("issueplace");
+    },
+    birthplace: function birthplace() {
+      this.validation("birthplace");
+    },
+    fathersfirstname: function fathersfirstname() {
+      this.validation("fathersfirstname");
+    },
+    fatherslastname: function fatherslastname() {
+      this.validation("fatherslastname");
+    },
+    fathersfathersname: function fathersfathersname() {
+      this.validation("fathersfathersname");
+    },
+    fathersbirthdate: function fathersbirthdate() {
+      this.validation("fathersbirthdate");
+    },
+    fathersid: function fathersid() {
+      this.validation("fathersid");
+    },
+    fathersnationalid: function fathersnationalid() {
+      this.validation("fathersnationalid");
+    },
+    fathersserialnumberid: function fathersserialnumberid() {
+      this.validation("fathersserialnumberid");
+    },
+    fathersissueplace: function fathersissueplace() {
+      this.validation("fathersissueplace");
+    },
+    fathersbirthplace: function fathersbirthplace() {
+      this.validation("fathersbirthplace");
+    },
+    fatherseducation: function fatherseducation() {
+      this.validation("fatherseducation");
+    },
+    fathersjob: function fathersjob() {
+      this.validation("fathersjob");
+    },
+    fathersphone: function fathersphone() {
+      this.validation("fathersphone");
+    },
+    fathersjobaddress: function fathersjobaddress() {
+      this.validation("fathersjobaddress");
+    },
+    mothersfirstname: function mothersfirstname() {
+      this.validation("mothersfirstname");
+    },
+    motherslastname: function motherslastname() {
+      this.validation("motherslastname");
+    },
+    mothersfathersname: function mothersfathersname() {
+      this.validation("mothersfathersname");
+    },
+    mothersbirthdate: function mothersbirthdate() {
+      this.validation("mothersbirthdate");
+    },
+    mothersid: function mothersid() {
+      this.validation("mothersid");
+    },
+    mothersnationalid: function mothersnationalid() {
+      this.validation("mothersnationalid");
+    },
+    mothersserialnumberid: function mothersserialnumberid() {
+      this.validation("mothersserialnumberid");
+    },
+    mothersissueplace: function mothersissueplace() {
+      this.validation("mothersissueplace");
+    },
+    mothersbirthplace: function mothersbirthplace() {
+      this.validation("mothersbirthplace");
+    },
+    motherseducation: function motherseducation() {
+      this.validation("motherseducation");
+    },
+    mothersjob: function mothersjob() {
+      this.validation("mothersjob");
+    },
+    mothersphone: function mothersphone() {
+      this.validation("mothersphone");
+    },
+    mothersjobaddress: function mothersjobaddress() {
+      this.validation("mothersjobaddress");
+    },
+    numberofchildren: function numberofchildren() {
+      this.validation("numberofchildren");
+    },
+    numberofbrothers: function numberofbrothers() {
+      this.validation("numberofbrothers");
+    },
+    numberofsisters: function numberofsisters() {
+      this.validation("numberofsisters");
+    },
+    address: function address() {
+      this.validation("address");
+    },
+    homesphone: function homesphone() {
+      this.validation("homesphone");
+    },
+    postalcode: function postalcode() {
+      this.validation("postalcode");
+    },
+    howfindus: function howfindus() {
+      this.validation("howfindus");
+    },
+    childtalent: function childtalent() {
+      this.validation("childtalent");
+    },
+    form_completer: function form_completer() {
+      this.validation("form_completer");
+    },
+    student_service_bool: function student_service_bool() {
+      this.checkRadioSelected("student_service_bool", "لطفا یکی از گزینه ها را انتخاب نمایید");
+    }
+  },
+  methods: {
+    formSubmitted: function formSubmitted() {
+      var _this = this;
+
+      var thisClass = this;
+      Object.values(document.getElementsByTagName("input")).map(function (element) {
+        thisClass.validation(element.name);
+
+        _this.hasError(element.name);
+      });
+      this.checkRadioSelected("student_service_bool", "لطفا یکی از گزینه ها را انتخاب نمایید");
+    },
+    checkRadioSelected: function checkRadioSelected(ruleName, message) {
+      var checkAllRadios = [];
+      var errorName = ruleName + "Error";
+      var errorsMessage = ruleName + "ErrorsMessage";
+      Object.values(document.getElementsByName(ruleName)).forEach(function (element) {
+        if (element.checked) {
+          checkAllRadios.push(true);
+        } else {
+          checkAllRadios.push(false);
+        }
+      });
+
+      if (checkAllRadios.includes(true)) {
+        this.$data[errorsMessage].splice(this.$data[errorsMessage].indexOf(message), 1);
+        return;
+      } else {
+        this.$data[errorName] = true;
+
+        if (this.$data[errorsMessage].indexOf(message) <= -1) {
+          this.$data[errorsMessage].push(message);
+        }
+      }
+    },
+    checkValidationRules: function checkValidationRules(element) {
+      this.validation(element.target.name);
+    },
+    hasError: function hasError(ruleName) {
+      var errorName = ruleName + "Error";
+      var errorMessage = ruleName + "ErrorsMessage";
+
+      if (this.validationRules[ruleName] == undefined || this.validationRules[ruleName] == "") {
+        return;
+      }
+
+      if (this.$data[errorMessage].length) {
+        this.$data[errorName] = true;
+      } else {
+        this.$data[errorName] = false;
+      }
+    },
+    validation: function validation(ruleName) {
+      var thisClass = this;
+
+      if (!this.validationRules.hasOwnProperty(ruleName)) {
+        return;
+      }
+
+      if (this.validationRules[ruleName].hasOwnProperty("numberOfCharacters")) {
+        var errorsMessage = ruleName + "ErrorsMessage";
+        var message = this.$data.validationRules[ruleName].numberOfCharacters.message;
+        var charactersNumber = this.$data.validationRules[ruleName].numberOfCharacters.charactersNumber;
+
+        if (this.$data[ruleName].length !== charactersNumber) {
+          if (thisClass.$data[errorsMessage].indexOf(message) <= -1) {
+            this.$data[errorsMessage].push(message);
+          }
+        } else {
+          this.$data[errorsMessage].map(function (error) {
+            if (error == message) {
+              thisClass.$data[errorsMessage].splice(thisClass.$data[errorsMessage].indexOf(error), 1);
+            }
+          });
+        }
+      }
+
+      if (this.validationRules[ruleName].hasOwnProperty("required")) {
+        var _errorsMessage = ruleName + "ErrorsMessage";
+
+        var _message = this.$data.validationRules[ruleName].required;
+
+        if (this.$data[ruleName] == null || this.$data[ruleName] == "") {
+          if (thisClass.$data[_errorsMessage].indexOf(_message) <= -1) {
+            this.$data[_errorsMessage].push(_message);
+          }
+        } else {
+          this.$data[_errorsMessage].map(function (error) {
+            if (error == _message) {
+              thisClass.$data[_errorsMessage].splice(thisClass.$data[_errorsMessage].indexOf(error), 1);
+            }
+          });
+        }
+      }
+
+      this.hasError(ruleName);
+    }
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/front/components/login.vue?vue&type=script&lang=js&":
 /*!**********************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/front/components/login.vue?vue&type=script&lang=js& ***!
@@ -31739,7 +32290,8 @@ Vue.config.devtools = true;
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
-Vue.component("login", __webpack_require__(/*! ./components/login.vue */ "./resources/js/front/components/login.vue")["default"]); // Vue.component('example', require('./components/Example.vue').default);
+Vue.component("login", __webpack_require__(/*! ./components/login.vue */ "./resources/js/front/components/login.vue")["default"]);
+Vue.component("students-data-form", __webpack_require__(/*! ./components/StudentsDataForm.vue */ "./resources/js/front/components/StudentsDataForm.vue")["default"]); // Vue.component('example', require('./components/Example.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -31750,6 +32302,56 @@ Vue.component("login", __webpack_require__(/*! ./components/login.vue */ "./reso
 var app = new Vue({
   el: "#app"
 });
+
+/***/ }),
+
+/***/ "./resources/js/front/components/StudentsDataForm.vue":
+/*!************************************************************!*\
+  !*** ./resources/js/front/components/StudentsDataForm.vue ***!
+  \************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _StudentsDataForm_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./StudentsDataForm.vue?vue&type=script&lang=js& */ "./resources/js/front/components/StudentsDataForm.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+var render, staticRenderFns
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_1__["default"])(
+  _StudentsDataForm_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"],
+  render,
+  staticRenderFns,
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/front/components/StudentsDataForm.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/front/components/StudentsDataForm.vue?vue&type=script&lang=js&":
+/*!*************************************************************************************!*\
+  !*** ./resources/js/front/components/StudentsDataForm.vue?vue&type=script&lang=js& ***!
+  \*************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_StudentsDataForm_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./StudentsDataForm.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/front/components/StudentsDataForm.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_StudentsDataForm_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
 
 /***/ }),
 

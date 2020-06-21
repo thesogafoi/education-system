@@ -53,6 +53,7 @@ class StudentPolicy
      */
     public function update(student $student)
     {
+        return false;
     }
 
     /**

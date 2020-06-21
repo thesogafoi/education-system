@@ -9,6 +9,6 @@ class StaffRoles extends Model
     // Relation Ships Section
     public function staff()
     {
-        return $this->hasMany(Teacher::class);
+        return $this->hasMany(staff::class);
     }
 }

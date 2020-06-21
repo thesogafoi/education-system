@@ -19,8 +19,9 @@ class CreateStudentsTable extends Migration
             $table->string('email', 255)->nullable()->unique();
             $table->string('firstname', 100)->nullable();
             $table->string('lastname', 100)->nullable();
-            $table->integer('students_data_id')->index()->nullable();
 
+            $table->integer('students_data_id')->unsigned()->index()->nullable();
+            $table->boolean('close_alert')->default(false);
             $table->string('reset_password_token', 255)->nullable();
             $table->string('password', 255);
             $table->unsignedTinyInteger('status')->default(0);

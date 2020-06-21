@@ -23,12 +23,15 @@ class StudentDashboardTest extends TestsTestCase
     /** @test */
     public function a_student_just_can_see_form_data_when_he_or_she_didnot_submit_before()
     {
-        // logged in student just can see from when his or her status will be 0
-        // logged in student just can submit own form if not unauthorize status will be fire
         $primaryStudent = create(Student::class);
         $secondaryStudent = create(Student::class);
         $this->get('/dashboard')->assertRedirect('/login');
         $this->actingAs($primaryStudent, 'student');
-        $this->get('/dashboard')->assertStatus(200);
+
+        $response = $this->get('/dashboard')->assertStatus(200);
+        $response->assertSee('شماره شناسنامه:');
+        $primaryStudent->studentSubmittedForm();
+        $secondResponse = $this->get('/dashboard');
+        $secondResponse->assertDontSee('شماره شناسنامه:');
     }
 }

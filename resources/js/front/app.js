@@ -20,6 +20,7 @@ Vue.config.devtools = true;
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
 Vue.component("login", require("./components/login.vue").default);
+Vue.component("students-data-form", require("./components/StudentsDataForm.vue").default);
 // Vue.component('example', require('./components/Example.vue').default);
 
 /**

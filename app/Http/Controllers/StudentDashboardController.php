@@ -6,6 +6,9 @@ class StudentDashboardController extends Controller
 {
     public function index()
     {
-        return view('front.dashboard', ['student' => auth()->guard('student')->user()]);
+        $student = auth()->guard('student')->user();
+        $studentsData = $student->studentsData()->first();
+
+        return view('front.dashboard', compact(['student', 'studentsData']));
     }
 }

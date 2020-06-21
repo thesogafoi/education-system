@@ -23,7 +23,7 @@ class RegisterController extends Controller
     protected function loginValidator(Request $request, $loginGuard)
     {
         $rules = [
-            'username' => 'required|max:100',
+            'username' => 'required|max:100|unique:students',
             'password' => 'required|string|max:255|confirmed'
         ];
         $request->validate($rules);

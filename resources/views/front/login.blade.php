@@ -106,7 +106,7 @@ Login
                             </div> <!-- card body and login form content student -->
 
                             <div v-if=" userType == 'teacher'" class="uk-card-body uk-text-right">
-                                <form class="uk-form-stacked" action="login/teacher" method="POST">
+                                <form class="uk-form-stacked" action="/login/staff" method="POST">
                                     {{csrf_field()}}
                                     <div class="uk-margin">
                                         <label class="uk-form-label" for="student-username"> نام کاربری </label>

@@ -36,3 +36,6 @@ Route::get('/dashboard', 'StudentDashboardController@index')->name('student.dash
 
 // Staff Dashboard Routes
 Route::get('/admin/dashboard', 'StaffDashboardController@index')->name('staff.dashboard')->middleware('staffLogin');
+
+// Students Data Controller
+Route::put('/dashboard/update/students/data/{student}/{studentsData}', 'StudentsDataController@updateFromStudentDashboard')->name('update.students.data.from.student.dashboard');

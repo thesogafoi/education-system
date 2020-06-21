@@ -2,6 +2,7 @@
 
 namespace App\Policies;
 
+use App\Student;
 use App\StudentsData;
 use App\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
@@ -47,13 +48,24 @@ class StudentsDataPolicy
     /**
      * Determine whether the user can update the model.
      *
-     * @param  \App\User  $user
      * @param  \App\StudentsData  $studentsData
      * @return mixed
      */
-    public function update(User $user, StudentsData $studentsData)
+    public function update(Student $student, StudentsData $studentsData)
     {
-        //
+        return (($student->id == $studentsData->student_id) &&
+                ($student->status == 0) &&
+                ($student->id == auth()->guard('student')->id()))
+                || $this->ifAdminIsLoggedIn();
+    }
+
+    protected function ifAdminIsLoggedIn()
+    {
+        if (auth()->guard('staff')->check()) {
+            return (auth()->guard('staff')->user()->role == 'admin');
+        } else {
+            return false;
+        }
     }
 
     /**

@@ -38,9 +38,33 @@
     </style>
 @endsection
 @section('content')
-@can('studentCanUpdateForm' , $student))
+<br>
+@if(!$student->close_alert)
+<div class="es-dashboard-alertbox">
+    @if($student->status == 2)
+        <div class="uk-alert-success" uk-alert>
+            <p> ثبت نام شما در سیستم مدرسه با موفقیت به پایان رسید، در صورت نیاز با شما تماس گرفته خواهد
+                شد </p>
+            <a class="uk-alert-close" uk-close></a>
+        </div> <!-- succes alert -->
+    @endif
+    @if($student->status == 0)
+        <div class="uk-alert-danger" uk-alert>
+            <p> دانش آموز عزیز ، برای تکمیل روند ثبت نام نیاز است فرم زیر را تکمیل نمایید </p>
+            <a class="uk-alert-close" uk-close></a>
+        </div> <!-- danger alert -->
+    @endif
+    @if($student->status == 1)
+        <div class="uk-alert-danger" uk-alert>
+            <p> دانش آموز عزیز ، فرم ثبت نام شما در انتظار تأیید مدیریت می باشد </p>
+        </div> <!-- danger alert -->
+    @endif
+</div> <!-- alertbox -->
+@endif
+
+@if($student->can('update' , $studentsData))
 @include('front.includes.student-data-form')
-@endcan
+@endif
 
 
 
