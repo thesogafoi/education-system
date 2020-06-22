@@ -14,7 +14,7 @@ class StudentsData extends Migration
             $table->integer('student_id')->unsigned()->index()->nullable();
 
             $table->string('fathersname', 100)->nullable();
-            $table->date('birthdate')->nullable();
+            $table->string('birthdate')->nullable();
             $table->string('studentsid', 10)->nullable();
             $table->string('serialnumberid', 100)->nullable();
             $table->string('issueplace', 100)->nullable();
@@ -48,18 +48,20 @@ class StudentsData extends Migration
             $table->string('mothersphone', 100)->nullable();
             $table->string('mothersjobaddress', 100)->nullable();
 
-            $table->unsignedTinyInteger('numberofchildren')->nullable();
-            $table->unsignedTinyInteger('numberofbrothers')->nullable();
-            $table->unsignedTinyInteger('numberofsisters')->nullable();
+            $table->string('numberofchildren', 10)->nullable();
+            $table->string('numberofbrothers', 10)->nullable();
+            $table->string('numberofsisters', 10)->nullable();
             $table->text('address')->nullable();
             $table->string('homesphone', 100)->nullable();
             $table->string('postalcode', 10)->nullable();
             $table->string('exschool', 100)->nullable();
             $table->text('howfindus')->nullable();
             $table->text('childtalent')->nullable();
-            $table->boolean('student-service-bool')->nullable();
-            $table->boolean('preshool-student-shift-bool')->nullable();
-            $table->string('form-completer', 100)->nullable();
+            $table->string('student_service_bool')->nullable();
+            $table->string('preschool_student_shift_bool')->nullable();
+
+            $table->string('form_completer', 100)->nullable();
+            $table->date('form_completed_date')->nullable();
 
             $table->timestamps();
         });

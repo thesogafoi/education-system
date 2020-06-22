@@ -1,12 +1,17 @@
 <script>
+import axios from "axios";
 export default {
-  props: ["oldValues"],
+  props: ["oldValues", "studentsDataId", "studentUsername", "showForm"],
   data() {
     return {
       // Binding input
+      isFormValid: false,
+      showCheckAlert: false,
       firstname: "",
       lastname: "",
       email: "",
+      grade: "",
+      last_exam: "",
       fathersname: "",
       birthdate: "",
       studentsid: "",
@@ -55,6 +60,8 @@ export default {
       firstnameError: false,
       lastnameError: false,
       emailError: false,
+      gradeError: false,
+      last_examError: false,
       fathersnameError: false,
       birthdateError: false,
       studentsidError: false,
@@ -104,6 +111,8 @@ export default {
       firstnameErrorsMessage: [],
       lastnameErrorsMessage: [],
       emailErrorsMessage: [],
+      gradeErrorsMessage: [],
+      last_examErrorsMessage: [],
       fathersnameErrorsMessage: [],
       birthdateErrorsMessage: [],
       studentsidErrorsMessage: [],
@@ -157,6 +166,12 @@ export default {
         },
         email: {
           required: "لطفا ایمیل خود را وارد کنید"
+        },
+        grade: {
+          required: "متقاضی کدام پایه هستید"
+        },
+        last_exam: {
+          required: "متقاضی کدام پایه هستید"
         },
         fathersname: {
           required: "لطفا نام پدر را وارد کنید"
@@ -263,9 +278,7 @@ export default {
         mothersphone: {
           required: "لطفا شماره تلفن مادر را وارد کنید"
         },
-        mothersjobaddress: {
-          required: "لطفا آدرس محل کار مادر را وارد کنید"
-        },
+        mothersjobaddress: {},
         numberofchildren: {
           required: "لطفا تعداد فرزندان را وارد کنید"
         },
@@ -282,7 +295,11 @@ export default {
           required: "لطفا شماره تلفن را وارد کنید"
         },
         postalcode: {
-          required: "لطفا کد پستی را وارد کنید"
+          required: "لطفا کد پستی را وارد کنید",
+          numberOfCharacters: {
+            message: "این فیلد باید 10 رقم باشد",
+            charactersNumber: 10
+          }
         },
         howfindus: {
           required: "لطفا به سوال بالا پاسخ دهید"
@@ -298,9 +315,7 @@ export default {
   },
   created() {
     const thisClass = this;
-    if (this.oldValues) {
-      Object.assign(this.$data, this.oldValues);
-    }
+    this.assignOldSessions();
   },
   watch: {
     firstname() {
@@ -311,6 +326,12 @@ export default {
     },
     email() {
       this.validation("email");
+    },
+    grade() {
+      this.validation("grade");
+    },
+    last_exam() {
+      this.validation("last_exam");
     },
     fathersname() {
       this.validation("fathersname");
@@ -405,9 +426,6 @@ export default {
     mothersphone() {
       this.validation("mothersphone");
     },
-    mothersjobaddress() {
-      this.validation("mothersjobaddress");
-    },
     numberofchildren() {
       this.validation("numberofchildren");
     },
@@ -443,8 +461,15 @@ export default {
     }
   },
   methods: {
-    formSubmitted() {
+    assignOldSessions() {
+      if (this.oldValues) {
+        Object.assign(this.$data, this.oldValues);
+      }
+    },
+    checkFields() {
       const thisClass = this;
+      this.isFormValid = true;
+      this.showCheckAlert = true;
       Object.values(document.getElementsByTagName("input")).map(element => {
         thisClass.validation(element.name);
         this.hasError(element.name);
@@ -492,6 +517,7 @@ export default {
       }
       if (this.$data[errorMessage].length) {
         this.$data[errorName] = true;
+        this.isFormValid = false;
       } else {
         this.$data[errorName] = false;
       }
@@ -522,6 +548,7 @@ export default {
           });
         }
       }
+
       if (this.validationRules[ruleName].hasOwnProperty("required")) {
         let errorsMessage = ruleName + `ErrorsMessage`;
         let message = this.$data.validationRules[ruleName].required;

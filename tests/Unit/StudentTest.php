@@ -42,5 +42,23 @@ class StudentTest extends TestCase
         $this->assertEquals($student->status, 1);
     }
 
+    /** @test */
+    public function un_logged_in_user_cannot_subtit_form()
+    {
+        $student = create(Student::class);
+        $this->actingAs($student);
+        $response = $this->put("/dashboard/update/students/data/$student->username/{$student->studentsData()->first()->id}");
+        $response->assertStatus(403);
+    }
+
+    /** @test */
+    public function if_another_user_submit_students_form_data_unauthorized_error_must_be_occured()
+    {
+        $primaryStudent = create(Student::class);
+        $secondaryStudent = create(Student::class);
+        $this->actingAs($secondaryStudent);
+        $response = $this->put('/dashboard/update/students/data/{}/{$secondaryStudent->studentsData()->first()->id}');
+    }
+
     // **************************************
 }

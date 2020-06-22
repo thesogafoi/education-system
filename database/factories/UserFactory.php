@@ -71,7 +71,7 @@ $factory->state(Staff::class, 'teacher', function (Faker $faker) {
 
 $factory->define(Student::class, function (Faker $faker) {
     return [
-        'username' => $faker->unique()->name,
+        'username' => $faker->unique()->userName,
         'password' => Hash::make('021051'),
         'firstname' => $faker->unique()->firstName(),
         'email' => $faker->unique()->email,

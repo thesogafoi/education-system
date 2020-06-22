@@ -1908,14 +1908,21 @@ module.exports = {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
+
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ["oldValues"],
+  props: ["oldValues", "studentsDataId", "studentUsername", "showForm"],
   data: function data() {
     return {
       // Binding input
+      isFormValid: false,
+      showCheckAlert: false,
       firstname: "",
       lastname: "",
       email: "",
+      grade: "",
+      last_exam: "",
       fathersname: "",
       birthdate: "",
       studentsid: "",
@@ -1964,6 +1971,8 @@ __webpack_require__.r(__webpack_exports__);
       firstnameError: false,
       lastnameError: false,
       emailError: false,
+      gradeError: false,
+      last_examError: false,
       fathersnameError: false,
       birthdateError: false,
       studentsidError: false,
@@ -2012,6 +2021,8 @@ __webpack_require__.r(__webpack_exports__);
       firstnameErrorsMessage: [],
       lastnameErrorsMessage: [],
       emailErrorsMessage: [],
+      gradeErrorsMessage: [],
+      last_examErrorsMessage: [],
       fathersnameErrorsMessage: [],
       birthdateErrorsMessage: [],
       studentsidErrorsMessage: [],
@@ -2065,6 +2076,12 @@ __webpack_require__.r(__webpack_exports__);
         },
         email: {
           required: "لطفا ایمیل خود را وارد کنید"
+        },
+        grade: {
+          required: "متقاضی کدام پایه هستید"
+        },
+        last_exam: {
+          required: "متقاضی کدام پایه هستید"
         },
         fathersname: {
           required: "لطفا نام پدر را وارد کنید"
@@ -2171,9 +2188,7 @@ __webpack_require__.r(__webpack_exports__);
         mothersphone: {
           required: "لطفا شماره تلفن مادر را وارد کنید"
         },
-        mothersjobaddress: {
-          required: "لطفا آدرس محل کار مادر را وارد کنید"
-        },
+        mothersjobaddress: {},
         numberofchildren: {
           required: "لطفا تعداد فرزندان را وارد کنید"
         },
@@ -2190,7 +2205,11 @@ __webpack_require__.r(__webpack_exports__);
           required: "لطفا شماره تلفن را وارد کنید"
         },
         postalcode: {
-          required: "لطفا کد پستی را وارد کنید"
+          required: "لطفا کد پستی را وارد کنید",
+          numberOfCharacters: {
+            message: "این فیلد باید 10 رقم باشد",
+            charactersNumber: 10
+          }
         },
         howfindus: {
           required: "لطفا به سوال بالا پاسخ دهید"
@@ -2206,10 +2225,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   created: function created() {
     var thisClass = this;
-
-    if (this.oldValues) {
-      Object.assign(this.$data, this.oldValues);
-    }
+    this.assignOldSessions();
   },
   watch: {
     firstname: function firstname() {
@@ -2220,6 +2236,12 @@ __webpack_require__.r(__webpack_exports__);
     },
     email: function email() {
       this.validation("email");
+    },
+    grade: function grade() {
+      this.validation("grade");
+    },
+    last_exam: function last_exam() {
+      this.validation("last_exam");
     },
     fathersname: function fathersname() {
       this.validation("fathersname");
@@ -2314,9 +2336,6 @@ __webpack_require__.r(__webpack_exports__);
     mothersphone: function mothersphone() {
       this.validation("mothersphone");
     },
-    mothersjobaddress: function mothersjobaddress() {
-      this.validation("mothersjobaddress");
-    },
     numberofchildren: function numberofchildren() {
       this.validation("numberofchildren");
     },
@@ -2349,10 +2368,17 @@ __webpack_require__.r(__webpack_exports__);
     }
   },
   methods: {
-    formSubmitted: function formSubmitted() {
+    assignOldSessions: function assignOldSessions() {
+      if (this.oldValues) {
+        Object.assign(this.$data, this.oldValues);
+      }
+    },
+    checkFields: function checkFields() {
       var _this = this;
 
       var thisClass = this;
+      this.isFormValid = true;
+      this.showCheckAlert = true;
       Object.values(document.getElementsByTagName("input")).map(function (element) {
         thisClass.validation(element.name);
 
@@ -2396,6 +2422,7 @@ __webpack_require__.r(__webpack_exports__);
 
       if (this.$data[errorMessage].length) {
         this.$data[errorName] = true;
+        this.isFormValid = false;
       } else {
         this.$data[errorName] = false;
       }

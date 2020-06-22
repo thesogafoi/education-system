@@ -4,12 +4,19 @@ namespace App\Http\Controllers;
 
 use App\Student;
 use App\StudentsData;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class StudentsDataController extends Controller
 {
+    public function __construct()
+    {
+        // $this->middleware('studentLogin');
+    }
+
     public function updateFromStudentDashboard(Request $request, Student $student, StudentsData $studentsData)
     {
+        dd($this->authorize('update', $studentsData));
         $this->updateFromStudentDashboardValidation($request);
         $student->firstname = $request->firstname;
         $student->lastname = $request->lastname;
@@ -59,13 +66,18 @@ class StudentsDataController extends Controller
         $studentsData->form_completer = $request->form_completer;
         $studentsData->preschool_student_shift_bool = $request->preschool_student_shift_bool;
         $studentsData->student_service_bool = $request->student_service_bool;
+        $studentsData->form_completed_date = Carbon::now();
+
         $studentsData->save();
+        $student->studentSubmittedForm();
+
+        return back();
     }
 
     protected function updateFromStudentDashboardValidation(Request $request)
     {
         $rules = [
-            'email' => 'required|max:255',
+            'email' => 'required|max:255|email',
             'firstname' => 'required|max:100',
             'lastname' => 'required|max:100',
             'fathersname' => 'required|max:100',
@@ -100,9 +112,9 @@ class StudentsDataController extends Controller
             'mothersjob' => 'required|max:100',
             'mothersphone' => 'required|max:100',
             'mothersjobaddress' => 'required|max:100',
-            'numberofchildren' => 'required|numeric|max:125',
-            'numberofbrothers' => 'required|numeric|max:125',
-            'numberofsisters' => 'required|numeric|max:125',
+            'numberofchildren' => 'required|max:10',
+            'numberofbrothers' => 'required|max:10',
+            'numberofsisters' => 'required|max:10',
             'address' => 'required',
             'homesphone' => 'required|max:100',
             'postalcode' => 'required|max:10',
@@ -110,7 +122,7 @@ class StudentsDataController extends Controller
             'howfindus' => 'required',
             'childtalent' => 'required',
             'form_completer' => 'required|max:100',
-            'student_service_bool' => 'required'
+            'student_service_bool' => 'required',
         ];
         $request->validate($rules);
     }

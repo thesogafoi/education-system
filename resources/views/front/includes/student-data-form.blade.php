@@ -1,53 +1,77 @@
-<students-data-form inline-template :old-values="{{json_encode(session()->getOldInput())}}">
+<students-data-form inline-template :old-values="{{json_encode(session()->getOldInput())}}" 
+    :students-data-id="{{json_encode($studentsData->id)}}" :student-username="{{json_encode($student->username)}}"
+    >
+    
     <main class="">
         <div class="uk-section uk-section-default">
             <div class="uk-container uk-container-small uk-position-relative">
-                <div class="es-dashboard-header">
-                    <div class="es-dashboard-title">
-                        @if(($student->firstname != null || $student->firstname != '') 
-                            && ($student->lastname != null  || $student->lastname != ''))
-                        <h3 class="es-welcome"> <span class="es-user-lastname"> {{$student->firstname}} </span> <span
-                            class="es-user-lastname"> {{$student->lastname}} </span> عزیز خوش آمدید </h3>
-                        @else
-                        <h3 class="es-welcome">  خوش آمدید </h3>
-                        @endif
-                        <ul class="uk-breadcrumb">
-                            <li><a href="#"> خانه </a></li>
-                        </ul> <!-- breadcrumb nav -->
-                    </div> <!-- header content -->
-                </div> <!-- dashboard header info -->
                 <div class="es-dashboard-content">
-                    
-
                     <div class="es-student-initial-registerform">
                         <legend class="uk-legend"> فرم ثبت نام در سیستم مدرسه </legend>
                         <h6 class="uk-margin uk-heading-divider"> فرم شماره 1 </h6>
 
-                        <form class="uk-grid-small" uk-grid method="POST" @submit.prevent="formSubmitted"
+                        <form class="uk-grid-small" uk-grid method="POST" 
                         action="/dashboard/update/students/data/{{$student->username}}/{{$studentsData->id}}">
                             {{method_field('PUT')}}
                             {{ csrf_field() }}
                             
                             <div class="uk-width-1-3@s">
-                                <label class="uk-form-label" for="date-of-register"> تاریخ تمکیل فرم </label>
+                                <label class="uk-form-label" for="date-of-register"> ایمیل خود را وارد کنید</label>
                                 <div class="uk-form-controls">
-                                    <input @focus="checkValidationRules" 
-                                    :class="{'uk-input':true,'input-has-error': firstnameError {{$errors->has('firstname') ? '|| true' : ''}}}" 
+                                    <input @focus="checkValidationRules" v-model="email"
+                                    :class="{'uk-input':true,'input-has-error': emailError {{$errors->has('email') ? '|| true' : ''}}}" 
                                      id="date-of-register" type="text"
-                                        placeholder="روز / ماه / سال">
+                                        placeholder="example@example.com" name="email">
+                                        <div v-if="emailError  {{$errors->has('email') ? '|| true' : ''}}">
+                                            @if($errors->has('email'))
+                                                <span style="color:red">
+                                                    @foreach ($errors->get('email') as $error)
+                                                        {{$error}}
+                                                    @endforeach
+                                                </span>
+                                            @else
+                                                <span style="color:red" v-for="error in emailErrorsMessage">@{{error}} . </span>
+                                            @endif
+                                        </div>
                                 </div>
                             </div>
                             <div class="uk-width-1-3@s">
                                 <label class="uk-form-label" for="student-register-grade"> پایه </label>
                                 <div class="uk-form-controls">
-                                    <input @focus="checkValidationRules" class="uk-input" id="student-register-grade" type="text" placeholder="اول">
+                                    <input @focus="checkValidationRules" v-model="grade"
+                                    :class="{'uk-input':true,'input-has-error': gradeError {{$errors->has('grade') ? '|| true' : ''}}}" 
+                                    id="student-register-grade" type="text" placeholder="اول" name="grade">
+                                    <div v-if="gradeError  {{$errors->has('grade') ? '|| true' : ''}}">
+                                        @if($errors->has('grade'))
+                                            <span style="color:red">
+                                                @foreach ($errors->get('grade') as $error)
+                                                    {{$error}}
+                                                @endforeach
+                                            </span>
+                                        @else
+                                            <span style="color:red" v-for="error in gradeErrorsMessage">@{{error}} . </span>
+                                        @endif
+                                    </div>
                                 </div>
                             </div>
                             <div class="uk-width-1-3@s">
-                                <label class="uk-form-label" for="student-exam-date"> تاریخ آزمون </label>
+                                <label class="uk-form-label" for="student-exam-date"> تاریخ آخرین آزمون </label>
                                 <div class="uk-form-controls">
-                                    <input @focus="checkValidationRules" class="uk-input" id="student-exam-date" type="text"
-                                        placeholder="روز / ماه / سال">
+                                    <input @focus="checkValidationRules" v-model="last_exam"
+                                    :class="{'uk-input':true,'input-has-error': last_examError {{$errors->has('last_exam') ? '|| true' : ''}}}" 
+                                     id="student-exam-date" type="text"
+                                        placeholder="روز / ماه / سال" name="last_exam">
+                                        <div v-if="last_examError  {{$errors->has('last_exam') ? '|| true' : ''}}">
+                                            @if($errors->has('last_exam'))
+                                                <span style="color:red">
+                                                    @foreach ($errors->get('last_exam') as $error)
+                                                        {{$error}}
+                                                    @endforeach
+                                                </span>
+                                            @else
+                                                <span style="color:red" v-for="error in last_examErrorsMessage">@{{error}} . </span>
+                                            @endif
+                                        </div>
                                 </div>
                             </div>
                             <div class="uk-margin uk-width-1-1">
@@ -174,15 +198,15 @@
                                     :class="{'uk-input':true,'input-has-error': serialnumberidError {{$errors->has('serialnumberid') ? '|| true' : ''}}}" 
                                      id="student-register-id-serial" 
                                     name="serialnumberid" v-model="serialnumberid"  type="text">
-                                    <div v-if="firstnameError  {{$errors->has('firstname') ? '|| true' : ''}}">
-                                        @if($errors->has('firstname'))
+                                    <div v-if="serialnumberidError  {{$errors->has('serialnumberid') ? '|| true' : ''}}">
+                                        @if($errors->has('serialnumberid'))
                                             <span style="color:red">
-                                                @foreach ($errors->get('firstname') as $error)
+                                                @foreach ($errors->get('serialnumberid') as $error)
                                                     {{$error}}
                                                 @endforeach
                                             </span>
                                         @else
-                                            <span style="color:red" v-for="error in firstnameErrorsMessage">@{{error}} . </span>
+                                            <span style="color:red" v-for="error in serialnumberidErrorsMessage">@{{error}} . </span>
                                         @endif
                                     </div>
                                 </div>
@@ -1055,7 +1079,16 @@
                                         </div>
                                 </div>
                             </div>
+                            <div>
+
                             <input  type="submit" value="ارسال اطلاعات">
+                            <button  @click="checkFields()"
+                            type="button" >چک کردن درستی اطلاعات قبل از ارسال</button>
+                            <div v-if="showCheckAlert">
+                                <span style="color:red" v-if="!isFormValid"> بعضی فیلد ها دچار مشکل هستند , لطفا دوباره اطلاعات را چک کنید</span>
+                                <span style="color:green" v-else>تمامی فیلد ها به درستی کامل شده اند </span>
+                            </div>
+                            </div>
                         </form>
                     </div> <!-- register form -->
 

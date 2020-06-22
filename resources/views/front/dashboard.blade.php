@@ -61,7 +61,20 @@
     @endif
 </div> <!-- alertbox -->
 @endif
-
+<div class="es-dashboard-header">
+    <div class="es-dashboard-title">
+        @if(($student->firstname != null || $student->firstname != '') 
+            && ($student->lastname != null  || $student->lastname != ''))
+        <h3 class="es-welcome"> <span class="es-user-lastname"> {{$student->firstname}} </span> <span
+            class="es-user-lastname"> {{$student->lastname}} </span> عزیز خوش آمدید </h3>
+        @else
+        <h3 class="es-welcome">  خوش آمدید </h3>
+        @endif
+        <ul class="uk-breadcrumb">
+            <li><a href="#"> خانه </a></li>
+        </ul> <!-- breadcrumb nav -->
+    </div> <!-- header content -->
+</div> <!-- dashboard header info -->
 @if($student->can('update' , $studentsData))
 @include('front.includes.student-data-form')
 @endif

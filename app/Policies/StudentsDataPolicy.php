@@ -53,9 +53,11 @@ class StudentsDataPolicy
      */
     public function update(Student $student, StudentsData $studentsData)
     {
+        return true;
+
         return (($student->id == $studentsData->student_id) &&
                 ($student->status == 0) &&
-                ($student->id == auth()->guard('student')->id()))
+                ($student->id == auth()->guard('student')->id()) && auth()->guard('student')->check())
                 || $this->ifAdminIsLoggedIn();
     }
 
